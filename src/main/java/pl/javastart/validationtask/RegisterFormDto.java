@@ -18,11 +18,11 @@ public class RegisterFormDto {
     private String postalCode;
     @NotBlank(message = "Pole nie może być puste")
     private String city;
-    @Pattern(regexp = "^(?=.{1,64}@)[A-Za-z0-9_-]+([A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(.[A-Za-z]{2,})$"
+    @Pattern(regexp = "^(?=.{1,64}@)[A-Za-z0-9_-]+([A-Za-z0-9._-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(.[A-Za-z]{2,})$"
             , message = "musi być poprawnie sformatowany adresem email")
     private String email;
     @Length(min = 8, message = "Hasło musi zawierać najmniej 8 znaków")
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[!\"#$%&'()*+,-./:;<=>?@\\[\\]^_`{|}])[A-Z0-9a-z!\"#$%&'()*+,-./:;<=>?@\\[\\]^_`{|}]{1,}$"
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[!\"#$%&'()*+,-./:;<=>?@\\[\\]^_`{|}])[A-Z0-9a-z!\"#$%&'()*+,-./:;<=>?@\\[\\]^_`{|}]+$"
             , message = "Hasło musi zawierać min. 1 znak mały, duży i znak specjalny")
     @NotBlank(message = "Pole nie może być puste")
     private String password;
