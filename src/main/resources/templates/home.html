@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="pl" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Strona główna</title>
@@ -20,45 +20,53 @@
         <div class="row g-3 mb-3">
             <div class="col">
                 <label for="name" class="form-label">Imię</label>
-                <input type="text" class="form-control" id="name" placeholder="Imię" th:field="*{firstName}">
+                <input type="text" class="form-control" id="name" placeholder="Imię" th:field="*{firstName}" required>
+                <p style="color: red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
             </div>
             <div class="col">
                 <label for="surname" class="form-label">Nazwisko</label>
-                <input type="text" class="form-control" placeholder="Nazwisko" id="surname" th:field="*{surname}">
+                <input type="text" class="form-control" placeholder="Nazwisko" id="surname" th:field="*{surname}" required>
+                <p style="color: red" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></p>
             </div>
         </div>
 
         <div class="col-12">
             <label for="address" class="form-label">Ulica, numer domu i mieszkania</label>
-            <input type="text" class="form-control" id="address" placeholder="Wiejska 32a/4" th:field="*{address}">
+            <input type="text" class="form-control" id="address" placeholder="Wiejska 32a/4" th:field="*{address}" required>
+            <p style="color: red" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
         </div>
 
         <div class="row mt-4">
             <div class="col-2">
                 <label for="postalCode" class="form-label">Kod pocztowy</label>
-                <input type="text" class="form-control" id="postalCode" placeholder="12-345" th:field="*{postalCode}">
+                <input type="text" class="form-control" id="postalCode" placeholder="12-345" th:field="*{postalCode}" required>
+                <p style="color: red" th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}"></p>
             </div>
 
             <div class="col">
                 <label for="city" class="form-label">Miasto</label>
-                <input type="text" class="form-control" id="city" placeholder="Miasto" th:field="*{city}">
+                <input type="text" class="form-control" id="city" placeholder="Miasto" th:field="*{city}" required>
+                <p style="color: red" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></p>
             </div>
         </div>
 
         <div class="mb-3 mt-4">
             <label for="email" class="form-label">Adres email</label>
-            <input type="email" class="form-control" id="email" placeholder="email@example.com"   th:field="*{email}">
+            <input type="email" class="form-control" id="email" placeholder="email@example.com"   th:field="*{email}" required>
             <div id="emailHelp" class="form-text">Nikomu nie udostępniamy Twojego adresu email.</div>
+            <p style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
         </div>
 
         <div class="mb-3">
             <label for="password" class="form-label">Hasło</label>
-            <input type="password" class="form-control" id="password" th:field="*{password}">
+            <input type="password" class="form-control" id="password" th:field="*{password}" required>
+            <p style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
         </div>
 
         <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="termsAgreement" th:field="*{termsAgreement}">
+            <input type="checkbox" class="form-check-input" id="termsAgreement" th:field="*{termsAgreement}" required>
             <label class="form-check-label" for="termsAgreement">Zgadzam się na warunki przedstawione w <a href="#">regulaminie</a></label>
+            <p style="color: red" th:if="${#fields.hasErrors('termsAgreement')}" th:errors="*{termsAgreement}"></p>
         </div>
         <button type="submit" class="btn btn-primary">Rejestruj</button>
 

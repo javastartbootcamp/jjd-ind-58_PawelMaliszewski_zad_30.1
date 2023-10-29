@@ -1,9 +1,10 @@
 package pl.javastart.validationtask;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HomeController {
@@ -15,7 +16,12 @@ public class HomeController {
     }
 
     @PostMapping("/register")
-    public String register(RegisterFormDto registerFormDto, Model model) {
+    public String register(@Valid @ModelAttribute(name = "data") RegisterFormDto registerFormDto
+            , BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("data", registerFormDto);
+            return "home";
+        }
         model.addAttribute("formData", registerFormDto);
         return "success";
     }
